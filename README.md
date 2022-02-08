@@ -24,7 +24,7 @@ Using your knowledge, add the following page
 ​
 ### Create a Product List Page
  - Retrieve a list of 50 coffees items from https://random-data-api.com/api/coffee/random_coffee endpoint
- - You can find API documentation here: hhttps://random-data-api.com
+ - You can find API documentation here: https://random-data-api.com
  - Implement pagination, with a limit of 10 items per page
 ​
 ### Bonus Challenges
