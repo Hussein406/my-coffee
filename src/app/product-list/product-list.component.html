@@ -6,8 +6,9 @@
   <li>{{ coffee.uid }}</li>
   <li>{{ coffee.variety }}</li>
 </ul> -->
-<section *ngFor="let coffee of coffees" fxLayout fxLayoutAlign="center">
-  <mat-card fxFlex.xs="100%" fxFlex="20rem">
+<section *ngFor="let coffee of coffeeSlice" fxLayout fxLayoutAlign="center">
+  
+  <mat-card fxFlex.xs="100%" fxFlex="20rem" fxLayoutGap="10px" class="card">
     <mat-card-header>
       <div><mat-icon>coffee</mat-icon></div>
       <h1>
@@ -28,5 +29,10 @@
     </mat-card-content>
   </mat-card>
 </section>
+<mat-paginator [length]="this.coffees.length"
+              [pageSize]="10"
+             
+              aria-label="Select page"
+              (page)="OnPageChange($event)">
+</mat-paginator>
 
-<!-- | {{ coffee.intensifier }} | {{ coffee.notes }} | {{ coffee.origin}} | {{ coffee.variety}} -->

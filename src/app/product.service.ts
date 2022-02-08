@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { observable, Observable, of } from 'rxjs';
 import { Product } from './product';
 
 @Injectable({
@@ -9,34 +9,23 @@ import { Product } from './product';
 })
 export class ProductService {
   private coffeeurl = 'https://random-data-api.com/api/coffee/random_coffee';
-
+  coffees: Product[] = []; 
   constructor(private http: HttpClient) {}
 
-  // onFetchCoffee(): Observable<any> {
-  //   // this.productService.getCoffees().subscribe((coffees) => {
-  //   //   console.log(coffees);
-  //   //   this.coffees = coffees;
-  //   // });
-  //   this.fetchCofee()
-  
-  // }
 
-  // private fetchCofee() {
-  //   // const postArray: Product[] = [];
-  //   for (let i = 0; i <= 5; i++) {
-  //   this.http
-  //     .get<Product[]>(this.coffeeurl)
-  //     .pipe(
-  //       map((responseData) => {
-  //         const postArray: Product[] = responseData;
-  //         return postArray; 
-  //       })
-  //     )
-  //     .subscribe(res => {
-  //       console.log(res)
-  //     });
-  // }
-  // }
+  fetchCofee() {
+    return this.http
+      .get<Product>(this.coffeeurl)
+      .pipe(
+        map((responseData) => {
+          const postArray:Product[] = [];
+          postArray.push({...responseData})
+          // console.log(postArray)
+          return postArray; 
+          
+        })
+      )
+  }
 
   // private handleError<T>(operation = 'operation', result?: T) {
   //   return (error: any): Observable<T> => {
