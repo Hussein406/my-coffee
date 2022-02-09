@@ -6,8 +6,9 @@ img {
 .card-coffee {
   /* max-width: 300px; */
   margin: 1rem 5rem;
-  background-color:bisque;
+  background-color: bisque;
   @media (min-width: 735px) {
-      margin: 1rem;
+    margin: 1rem;
   }
+  cursor: pointer;
 }

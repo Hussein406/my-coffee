@@ -3,7 +3,11 @@
     <div class="col-md-3"></div>
     <div class="col-md-6 text-center">
       <div *ngFor="let coffee of coffeeSlice">
-        <div class="card card-coffee mb-2">
+        <div 
+          class="card card-coffee mb-2" 
+          (click)="onSelect(coffee)"
+          [class.selected]="coffee === selectedCoffee"
+          >
           <div class="card-body">
             <h2 class="card-title display-2">
               {{ coffee.blend_name }}
@@ -16,20 +20,27 @@
             <p>Intensifier: {{ coffee.intensifier }}</p>
             <span>
               <mat-icon>room</mat-icon>
-              {{ coffee.origin }}
+              {{ coffee.origin }} | {{ coffee.id }}
             </span>
           </div>
         </div>
       </div>
 
       <mat-paginator
+        *ngIf="isloaded"
         [length]="this.coffees.length"
         [pageSize]="10"
         aria-label="Select page"
         (page)="OnPageChange($event)"
       >
       </mat-paginator>
+      <div class="alert alert-danger" *ngIf="error">
+        <h1>Ann error Occured!</h1>
+        <p>{{ error }}</p>
+        <button class="btn btn-danger" (click)="onHandleError()">Okay</button>
+      </div>
     </div>
     <div class="col-md-3"></div>
   </div>
+  <app-product-details [coffee]="selectedCoffee"></app-product-details>
 </div>
