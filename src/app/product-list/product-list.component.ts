@@ -32,7 +32,7 @@ export class ProductListComponent implements OnInit {
     for (let i = 0; i <= 99; i++) {
       this.productService.fetchCofee().subscribe((products) => {
         this.coffees.push(...products);
-        this.coffeeSlice = this.coffees.slice(0, 2);
+        this.coffeeSlice = this.coffees.slice(0, 10);
       });
     }
   }
