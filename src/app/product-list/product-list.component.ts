@@ -4,9 +4,10 @@ import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ThrowStmt } from '@angular/compiler';
 import { PageEvent } from '@angular/material/paginator';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -15,26 +16,25 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class ProductListComponent implements OnInit {
   coffees: Product[] = [];
-  // private coffeeurl = 'https://random-data-api.com/api/coffee/random_coffee';
-  // istrue: any;
   coffeeSlice: Product[] = [];
+  isloaded = false;
+  error = null;
+  selectedCoffee?: Product;
 
-  constructor(
-    private productService: ProductService,
-    private http: HttpClient
-  ) {}
+  constructor(private productService: ProductService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.onFetchCoffee();
-  }
-
-  onFetchCoffee() {
-    for (let i = 0; i <= 99; i++) {
-      this.productService.fetchCofee().subscribe((products) => {
-        this.coffees.push(...products);
-        this.coffeeSlice = this.coffees.slice(0, 2);
-      });
-    }
+    this.productService.fetchCofee().subscribe(
+      (product) => {
+        this.isloaded = true;
+        this.coffees = product;
+        this.coffeeSlice = this.coffees.slice(0, 9);
+      },
+      (errorMess) => {
+        this.error = errorMess.message;
+      }
+    );
+    this.getHero()
   }
 
   OnPageChange(e: PageEvent) {
@@ -45,5 +45,21 @@ export class ProductListComponent implements OnInit {
     }
 
     this.coffeeSlice = this.coffees.slice(startIndex, endindex);
+  }
+
+  onHandleError() {
+    this.error = null;
+  }
+
+  onSelect(coffee: Product) {
+    this.selectedCoffee = coffee; 
+  }
+
+  getHero() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    console.log('id asf ', id)
+    this.productService.getCoffee(id).subscribe((coffee) => {
+      console.log('Coffee', coffee)
+    })
   }
 }

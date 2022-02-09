@@ -1,38 +1,46 @@
-<!-- <ul *ngFor="let coffee of coffees">
-  <li>{{ coffee.blend_name }}</li>
-  <li>{{ coffee.id }}</li>
-  <li>{{ coffee.intensifier }}</li>
-  <li>{{ coffee.notes }}</li>
-  <li>{{ coffee.uid }}</li>
-  <li>{{ coffee.variety }}</li>
-</ul> -->
-<section *ngFor="let coffee of coffeeSlice" fxLayout fxLayoutAlign="center">
-  
-  <mat-card fxFlex.xs="100%" fxFlex="20rem" fxLayoutGap="10px" class="card">
-    <mat-card-header>
-      <div><mat-icon>coffee</mat-icon></div>
-      <h1>
-        {{ coffee.blend_name }}
-      </h1>
-    </mat-card-header>
-    <img
-      mat-card-image
-      src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-      alt="coffee"
-    />
-    <mat-card-content>
-      {{ coffee.notes }}
-    </mat-card-content>
-    <mat-card-content>
-      <mat-icon>room</mat-icon>
-      {{ coffee.origin }}
-    </mat-card-content>
-  </mat-card>
-</section>
-<mat-paginator [length]="this.coffees.length"
-              [pageSize]="10"
-             
-              aria-label="Select page"
-              (page)="OnPageChange($event)">
-</mat-paginator>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 text-center">
+      <div *ngFor="let coffee of coffeeSlice">
+        <div 
+          class="card card-coffee mb-2" 
+          (click)="onSelect(coffee)"
+          [class.selected]="coffee === selectedCoffee"
+          >
+          <div class="card-body">
+            <h2 class="card-title display-2">
+              {{ coffee.blend_name }}
+              <span class="badge bg-info">
+                <mat-icon>coffee</mat-icon> Name</span
+              >
+            </h2>
+            <p class="card-text">Notes: {{ coffee.notes }}</p>
+            <p>Variety: {{ coffee.variety }}</p>
+            <p>Intensifier: {{ coffee.intensifier }}</p>
+            <span>
+              <mat-icon>room</mat-icon>
+              {{ coffee.origin }} | {{ coffee.id }}
+            </span>
+          </div>
+        </div>
+      </div>
 
+      <mat-paginator
+        *ngIf="isloaded"
+        [length]="this.coffees.length"
+        [pageSize]="10"
+        aria-label="Select page"
+        (page)="OnPageChange($event)"
+      >
+      </mat-paginator>
+      <div class="alert alert-danger" *ngIf="error">
+        <h1>Ann error Occured!</h1>
+        <p>{{ error }}</p>
+        <button class="btn btn-danger" (click)="onHandleError()">Okay</button>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <app-product-details [coffee]="selectedCoffee"></app-product-details>
+</div>

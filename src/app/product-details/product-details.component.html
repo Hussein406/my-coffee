@@ -1,0 +1,8 @@
+<div class="row" *ngIf="coffee">
+    <h2>{{ coffee?.blend_name | uppercase }}</h2>
+    <p>id: {{ coffee?.id }}</p>
+    <p>Intensifiers: {{ coffee?.intensifier }}</p>
+    <p>Notes: {{ coffee?.notes }}</p>
+    <p>Origin: {{ coffee?.origin }}</p>
+    <p>Variety: {{ coffee?.variety }}</p>
+  </div>
