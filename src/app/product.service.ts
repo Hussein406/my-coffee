@@ -15,7 +15,7 @@ export class ProductService {
 
   fetchCofee() {
     
-    return this.http.get<Product[]>('https://random-data-api.com/api/coffee/random_coffee?size=2').pipe(
+    return this.http.get<Product[]>('https://random-data-api.com/api/coffee/random_coffee?size=100').pipe(
       catchError(error => {
         return throwError(error)
       })
