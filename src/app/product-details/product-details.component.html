@@ -1,9 +1,7 @@
-<div class="row" *ngIf="coffee">
+<div class="row coffeeDetail" *ngIf="coffee">
   <h2>{{ coffee?.blend_name | uppercase }}</h2>
-  <p>id: {{ coffee?.id }}</p>
   <p>Intensifiers: {{ coffee?.intensifier }}</p>
   <p>Notes: {{ coffee?.notes }}</p>
-  <p>Origin: {{ coffee?.origin }}</p>
+  <p>Origin: {{ coffee?.origin }} | <b>ID</b> = {{ coffee?.id }}</p>
   <p>Variety: {{ coffee?.variety }}</p>
 </div>
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore doloribus laboriosam quaerat voluptatum deleniti, error consectetur inventore id quas non maiores, illo enim beatae asperiores velit. Cumque earum provident molestiae?</p>

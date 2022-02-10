@@ -1,13 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6 text-center">
+    <!-- <div class="col-md-3"></div> -->
+    <div
+      class="col-xs-12 col-sm-10 col-md-6 col-sm-offset-1 col-md-offset-2 text-center"
+    >
       <div *ngFor="let coffee of coffeeSlice">
-        <div 
-          class="card card-coffee mb-2" 
+        <div
+          class="card card-coffee mb-2"
           (click)="onSelect(coffee)"
           [class.selected]="coffee === selectedCoffee"
-          >
+        >
           <div class="card-body">
             <h2 class="card-title display-2">
               {{ coffee.blend_name }}
@@ -16,8 +18,6 @@
               >
             </h2>
             <p class="card-text">Notes: {{ coffee.notes }}</p>
-            <p>Variety: {{ coffee.variety }}</p>
-            <p>Intensifier: {{ coffee.intensifier }}</p>
             <span>
               <mat-icon>room</mat-icon>
               {{ coffee.origin }} | {{ coffee.id }}
@@ -40,7 +40,12 @@
         <button class="btn btn-danger" (click)="onHandleError()">Okay</button>
       </div>
     </div>
-    <div class="col-md-3"></div>
+    <!-- <div class="col-md-3"></div> -->
+
+    <div
+      class="col-xs-12 col-sm-10 col-md-6 col-sm-offset-1 col-md-offset-2 text-center"
+    >
+      <app-product-details [coffee]="selectedCoffee"></app-product-details>
+    </div>
   </div>
-  <app-product-details [coffee]="selectedCoffee"></app-product-details>
 </div>
