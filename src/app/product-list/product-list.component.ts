@@ -59,7 +59,7 @@ export class ProductListComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     console.log('id asf ', id)
     this.productService.getCoffee(id).subscribe((coffee) => {
-      console.log('Coffee', coffee)
+      // console.log('Coffee', coffee)
     })
   }
 }

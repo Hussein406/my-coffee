@@ -21,13 +21,14 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getHero(); 
+    console.log(this.route.snapshot.params['id'])
   }
   
   getHero() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    console.log('id is ', id)
+    // console.log('id is ', id)
     this.productService.getCoffee(id).subscribe((coffee) => {
-      console.log('Coffee', coffee)
+      // console.log('Coffee', coffee)
     })
   }
 }
