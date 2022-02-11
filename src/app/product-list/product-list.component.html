@@ -1,49 +1,25 @@
 <div class="container">
-  <div class="row">
-    
+  <div class="row" *ngIf="!error">
     <div
       class="col-xs-10 col-sm-10 col-md-12 col-sm-offset-1 col-md-offset-2 text-center"
     >
-      <!-- <div *ngFor="let coffee of coffeeSlice">
-       
-        <div
-        
-        class="card card-coffee mb-2"
-        [class.selected]="coffee === selectedCoffee"
-        routerLink="/details/{{coffee.id}}"
-        >
-          <div class="card-body">
-            <h2 class="card-title display-2">
-              {{ coffee.blend_name }}
-              <span class="badge bg-info">
-                <mat-icon>coffee</mat-icon> Name</span
-              >
-            </h2>
-            <p class="card-text">Notes: {{ coffee.notes }}</p>
-            <span>
-              <mat-icon>room</mat-icon>
-              {{ coffee.origin }} | {{ coffee.id }}
-            </span>
-          </div>
-        </div>
-      </div> -->
-      <table class="table table-hover table-responsive table-striped table-bordered">
+      <table
+        class="table table-hover table-responsive table-striped table-bordered" 
+      >
         <thead>
           <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Origin</th>
             <th>Intensifier</th>
-          
           </tr>
         </thead>
         <tbody *ngFor="let coffee of coffeeSlice">
-          <tr routerLink="/details/{{coffee.id}}" class="myrow">
+          <tr routerLink="/details/{{ coffee.id }}" class="myrow">
             <th scope="row">{{ coffee.id }}</th>
             <td>{{ coffee.blend_name }}</td>
             <td>{{ coffee.origin }}</td>
             <td>{{ coffee.intensifier }}</td>
-           
           </tr>
         </tbody>
       </table>
@@ -55,17 +31,17 @@
         (page)="OnPageChange($event)"
       >
       </mat-paginator>
+    </div>
+  </div>
+  <div class="row">
+    <div
+      class="col-xs-10 col-sm-10 col-md-12 col-sm-offset-1 col-md-offset-2 text-center"
+    >
       <div class="alert alert-danger" *ngIf="error">
         <h1>Ann error Occured!</h1>
         <p>{{ error }}</p>
         <button class="btn btn-danger" (click)="onHandleError()">Okay</button>
       </div>
     </div>
-
-    <div
-      class="col-xs-12 col-sm-10 col-md-6 col-sm-offset-1 col-md-offset-2 text-center"
-    >
-    </div>
   </div>
 </div>
-

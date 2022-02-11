@@ -16,26 +16,21 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-
   coffees: Product[] = [];
   coffeeSlice: Product[] = [];
   isloaded = false;
   error = null;
   selectedCoffee?: Product;
 
-  private onSubscription!: Subscription; 
+  private onSubscription!: Subscription;
 
-  constructor(
-    private productService: ProductService,
-    private route: ActivatedRoute
-  ) {
-  }
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.onSubscription = this.productService.fetchCofee().subscribe(
       (product) => {
         this.isloaded = true;
-        this.productService.productService = product; 
+        this.productService.productService = product;
         this.coffees = product;
         this.coffeeSlice = this.coffees.slice(0, 10);
       },
@@ -43,9 +38,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
         this.error = errorMess.message;
       }
     );
-    
-    // this.coffees = this.productService.coffees; 
-    // console.log(this.coffees)
   }
 
   OnPageChange(e: PageEvent) {
@@ -64,18 +56,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   onSelect(coffee: Product) {
     this.selectedCoffee = coffee;
-    
-  }
-
-  getHero() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    // console.log('id asf ', id);
-    // this.productService.getCoffee(id).subscribe((coffee) => {
-      // console.log('Coffee', coffee)
-    // });
   }
 
   ngOnDestroy(): void {
-      this.onSubscription.unsubscribe(); 
+    this.onSubscription.unsubscribe();
   }
 }
