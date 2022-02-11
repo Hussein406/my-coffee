@@ -1,7 +1,23 @@
-<div class="row coffeeDetail" *ngIf="coffee">
-  <h2>{{ coffee?.blend_name | uppercase }}</h2>
-  <p>Intensifiers: {{ coffee?.intensifier }}</p>
-  <p>Notes: {{ coffee?.notes }}</p>
-  <p>Origin: {{ coffee?.origin }} | <b>ID</b> = {{ coffee?.id }}</p>
-  <p>Variety: {{ coffee?.variety }}</p>
+<div class="card mycard text-center">
+  <img src="https://images.unsplash.com/photo-1598908314732-07113901949e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" class="img-thumbnail img-fluid" />
+  <div class="card-body">
+    <h2 class="card-title display-2 text-success">{{ coffee?.blend_name }}</h2>
+    <p class="card-text">Notes: {{ coffee?.notes }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Intensifiers: {{ coffee?.intensifier }}</li>
+    <li class="list-group-item">Variety: {{ coffee?.variety }}</li>
+    <li class="list-group-item">
+      <mat-icon class="icon">room</mat-icon> {{ coffee?.origin }}
+    </li>
+  </ul>
+  <div class="card-body">
+    <button
+      type="button"
+      class="btn btn-primary text-center"
+      (click)="goBack()"
+    >
+      Back
+    </button>
+  </div>
 </div>

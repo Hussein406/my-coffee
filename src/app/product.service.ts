@@ -10,23 +10,27 @@ import { Product } from './product';
 export class ProductService {
   private coffeeurl =
     'https://random-data-api.com/api/coffee/random_coffee';
-  coffees: Product[] = [];
+  // coffeesEmitter = new Subject<Product[]>();
+  productService: Product[] = []; 
+  
   constructor(private http: HttpClient) {}
 
   fetchCofee() {
-    
-    return this.http.get<Product[]>('https://random-data-api.com/api/coffee/random_coffee?size=100').pipe(
+    return this.http.get<Product[]>('https://random-data-api.com/api/coffee/random_coffee?size=50')
+    .pipe(
       catchError(error => {
         return throwError(error)
-      })
-    );
+      }))
   }
 
-  getCoffee(id: number) {
-    // const url = `${this.coffeeurl}?${id}`;
-    return this.http.get<Product>(this.coffeeurl, {
-      params: new HttpParams().set("id", id),
-    });
-  }
+  // getCoffee(id: number) {
+  //   const url = `${this.coffeeurl}?${id}`;
+  //   return this.http.get<Product>(url
+  //   //   , {
+  //   //   params: new HttpParams().set("id", id),
+  //   // }
+  //   );›
+  // }
   
+
 }

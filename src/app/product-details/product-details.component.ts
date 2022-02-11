@@ -10,7 +10,9 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent implements OnInit {
-  @Input() coffee?: Product; 
+  coffee?: Product; 
+  coffeeDetail: Product[] = []; 
+
 
 
   constructor(
@@ -20,15 +22,34 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getHero(); 
-    console.log(this.route.snapshot.params['id'])
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    console.log(id)
+    // this.productService.fetchCofee().subscribe(
+    //   (product) => {
+    //     console.log(product)
+    //   })
+    this.coffeeDetail =  this.productService.productService;
+
+    for(const key in this.coffeeDetail){
+      if (id === this.coffeeDetail[key].id){
+        this.coffee =  this.coffeeDetail[key]
+      }
+    }
+      
   }
   
   getHero() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    // console.log('id is ', id)
-    this.productService.getCoffee(id).subscribe((coffee) => {
-      // console.log('Coffee', coffee)
-    })
+    
+    // console.log('id from url', id)
+    // this.productService.fetchCofee().subscribe((coff) => {
+    //   console.log(coff)
+    //   // if(id === ) {
+    //   //   console.log(coffee)
+    //   // }
+    // })
+  }
+
+  goBack() {
+    this.location.back()
   }
 }
