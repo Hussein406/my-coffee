@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../product';
+import { Product } from '../model/product';
 import { ProductService } from '../product.service';
 
 @Component({
