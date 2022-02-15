@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { PRODUCT } from '../mock.product';
-import { Product } from '../product';
+import { Product } from '../model/product';
 import { ProductService } from '../product.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
