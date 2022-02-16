@@ -1284,6 +1284,41 @@
     merge-source-map "^1.1.0"
     schema-utils "^2.7.0"
 
+"@ngrx/effects@^13.0.2":
+  version "13.0.2"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-13.0.2.tgz#785e54459efaef70ed3754a33d9f4ddd0ff9f033"
+  integrity sha512-7yW/KCxlRatDkdEriSnORlOYX8+1QAWEjPulNmHSPwehkzTQ3fIPfRBQy8xP8bnjwvGxnEZNwQlU4q1KVYOfhg==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngrx/entity@^13.0.2":
+  version "13.0.2"
+  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-13.0.2.tgz#99fceb9f160de67106364e27299e242b1608affc"
+  integrity sha512-sAN/YDvDNy4fmCOWU8LfPp8YI8XJcvmO89XTRSoJjo3O9BIbCSEw2gYHe1V7gWHLY5Pr9wiMybKhd4RHtzFHgQ==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngrx/router-store@^13.0.2":
+  version "13.0.2"
+  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-13.0.2.tgz#e57084cd74071760378645417bba94805c8b4514"
+  integrity sha512-XrzHjrD2hhnXdGeIpQm/msN77hoAL/QD3ZYGFJs3yT5d3x/T3L1JFlra7wC0OlKJkOs6zAh5Kz9cJ94YO/TEtQ==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngrx/store-devtools@^13.0.2":
+  version "13.0.2"
+  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-13.0.2.tgz#2b412fe47894fbb0c2aec8c1402f150bc139d5e9"
+  integrity sha512-fcQ5A7cv9PONFvqlpFPXHswWjEflJvqrNt6wmywlxMtJDjkgzCHpvRiJqup/FiTosblRERoeZXN0oHW3Er3+rw==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngrx/store@^13.0.2":
+  version "13.0.2"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-13.0.2.tgz#43f187956e07f33baed3e6215cd2fc59a06e9789"
+  integrity sha512-F7tsc3oCvKh+62MKiXTrvSeaxR41u4p8bch3BLjz12F37376rMuBnXf+V1thsPTZ6RB6aycAi821EQYVXFCXZg==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngtools/webpack@12.2.16":
   version "12.2.16"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-12.2.16.tgz#262fe1f8e75453ff6bcb01693af4838737ce45f3"
