@@ -18,7 +18,6 @@ import { selectAllProducts, selectCoffees } from "../store/products.selectors";
   styleUrls: ["./product-list.component.scss"],
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  coffees$: Observable<Product[]> | undefined;
   coffees: Product[] = [];
   coffeeSlice: Product[] = [];
   isloaded = false;
