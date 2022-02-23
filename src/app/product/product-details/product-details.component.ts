@@ -14,7 +14,7 @@ import { selectAllProducts } from "../store/products.selectors";
   styleUrls: ["./product-details.component.scss"],
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
-  coffee?: Product;
+  coffee: Product | undefined;
   private onSubscription!: Subscription;
 
   constructor(

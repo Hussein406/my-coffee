@@ -11,6 +11,6 @@ export const selectAllProducts = createSelector(
 
 export const selectCoffees = createSelector (
     selectAllProducts,
-    products => products.filter(course => course)
+    products => products.filter(product => product)
 )
 
